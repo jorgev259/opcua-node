@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"async": "^3.1.0",
+		"chalk": "^2.4.2",
+		"commander": "^3.0.1",
+		"csv-writer": "^1.5.0",
+		"node-opcua": "^2.1.7",
+		"treeify": "^1.1.0"
+	}
+}
