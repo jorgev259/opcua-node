@@ -1,7 +1,4 @@
 {
-    "user":"",
-    "password":"",
     "host":"",
-    "file":"opc.csv",
-    "path":""
+    "file":"opc.csv"
 }

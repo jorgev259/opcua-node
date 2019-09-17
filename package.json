@@ -1,10 +1,33 @@
 {
-	"dependencies": {
-		"async": "^3.1.0",
-		"chalk": "^2.4.2",
-		"commander": "^3.0.1",
-		"csv-writer": "^1.5.0",
-		"node-opcua": "^2.1.7",
-		"treeify": "^1.1.0"
-	}
+  "name": "opcua-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgev259/opcua-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgev259/opcua-node/issues"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.1",
+    "csv-writer": "^1.5.0",
+    "node-opcua": "^2.1.7",
+    "treeify": "^1.1.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "opcua": "./main.js"
+  },
+  "homepage": "https://github.com/jorgev259/opcua-node#readme"
 }

@@ -1,6 +1,7 @@
 const opcua = require('node-opcua')
 const program = require('commander')
-const defaults = require('defaults.json')
+const path = require('path')
+const defaults = require('./defaults.json')
 
 program
   .option('-u, --user <username>', 'Username', defaults.user)
@@ -8,18 +9,16 @@ program
   .option('-h, --host <endpoint url>', 'Endpoint url to connect to', defaults.host)
   .option('-f, --file <filename>', 'Specify filename to save the results to', defaults.file)
   .option('-l, --path <path>', 'Specify path to save the results to', defaults.path)
-
-program.parse(process.argv)
+  .parse(process.argv)
 
 const items = []
 let session
 
-const endpointUrl = 'opc.tcp://desktop-en0jlp3:62652/IntegrationObjects/UAServerSimulator'
-const client = opcua.OPCUAClient.create()
+const endpointUrl = program.host
+const client = opcua.OPCUAClient.create({ endpoint_must_exist: false })
 client.on('backoff', (retry, delay) =>
   console.log('Still trying to connect to ', endpointUrl, ': retry =', retry, 'next attempt in ', delay / 1000, 'seconds')
 )
-
 function connect () {
   client.connect(endpointUrl, function (err) {
     if (err) {
@@ -52,7 +51,7 @@ function browse () {
         const createCsvWriter = require('csv-writer').createArrayCsvWriter
         const csvWriter = createCsvWriter({
           header: ['PATH', 'NAME'],
-          path: 'file.csv'
+          path: path.join(program.path, program.file)
         })
 
         csvWriter.writeRecords(items)
