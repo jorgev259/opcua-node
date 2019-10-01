@@ -1,4 +1,7 @@
 {
-    "host":"",
-    "file":"opc.csv"
+    "host":"opc.tcp://localhost:3005",
+    "file":"opc.csv",
+    "user":"",
+    "password":"",
+    "path":"./"
 }

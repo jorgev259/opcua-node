@@ -1,5 +1,5 @@
 {
-  "name": "opcua-node",
+  "name": "opcua_csv_browse",
   "version": "1.0.0",
   "description": "",
   "devDependencies": {},
@@ -24,9 +24,7 @@
     "node-opcua": "^2.1.7",
     "treeify": "^1.1.0"
   },
-  "bin": {
-    "opcua": "./main.js",
-    "test": "./test.js"
-  },
+  "bin": "./main.js",
+  "preferGlobal": true,
   "homepage": "https://github.com/jorgev259/opcua-node#readme"
 }
