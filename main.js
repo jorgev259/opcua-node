@@ -10,7 +10,7 @@ program
   .option('-h, --host <endpoint url>', 'Endpoint url to connect to', defaults.host)
   .option('-f, --file <filename>', 'Specify filename to save the results to', defaults.file)
   .option('-l, --path <path>', 'Specify path to save the results to', defaults.path)
-  .parse(process.argv) 
+  .parse(process.argv)
 
 program.parse(process.argv)
 
@@ -26,6 +26,7 @@ function connect () {
   client.connect(endpointUrl, function (err) {
     if (err) {
       console.log('Cannot connect to endpoint :', endpointUrl)
+      process.exit()
     } else {
       console.log('Connected')
       createSession()
@@ -37,6 +38,7 @@ function createSession () {
   client.createSession(function (err, sessionOut) {
     if (err) {
       console.log(err)
+      process.exit()
     }
     console.log('Session created')
     session = sessionOut
@@ -63,7 +65,10 @@ function browse () {
             close()
           })
       })
-    } else console.log(err)
+    } else {
+      console.log(err)
+      process.exit()
+    }
   })
 }
 
@@ -71,6 +76,7 @@ function close () {
   session.close(function (err) {
     if (err) {
       console.log('Closing session failed')
+      process.exit()
     }
     console.log('Session closed')
     client.disconnect(process.exit)
@@ -94,7 +100,10 @@ function getPromises (refs, thisParent) {
             evalObject(`${thisParent}/${ref.browseName.name}`, browseResult.references).then(() => {
               resolve()
             })
-          } else console.log(err)
+          } else {
+            console.log(err)
+            reject(err)
+          }
         })
       } else {
         items.push([`${thisParent}/${ref.browseName.name}`, ref.browseName.name])
