@@ -55,7 +55,7 @@ function browse () {
 
         const createCsvWriter = require('csv-writer').createArrayCsvWriter
         const csvWriter = createCsvWriter({
-          header: ['PATH', 'NAME'],
+          header: ['PATH', 'NAME', 'NODEID'],
           path: path.join(program.path, program.file)
         })
 
@@ -106,7 +106,7 @@ function getPromises (refs, thisParent) {
           }
         })
       } else {
-        items.push([`${thisParent}/${ref.browseName.name}`, ref.browseName.name])
+        items.push([`${thisParent}/${ref.browseName.name}`, ref.browseName.name, `ns=${ref.nodeId.namespace};i=${ref.nodeId.value}`])
         resolve()
       }
     })
