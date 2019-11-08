@@ -106,7 +106,7 @@ function getPromises (refs, thisParent) {
           }
         })
       } else {
-        items.push([`${thisParent}/${ref.browseName.name}`, ref.browseName.name, `ns=${ref.nodeId.namespace};i=${ref.nodeId.value}`])
+        items.push([`${thisParent}/${ref.browseName.name}`, ref.browseName.name, `ns=${ref.nodeId.namespace};${isNaN(ref.nodeId.value) ? 's' : 'i'}=${ref.nodeId.value}`])
         resolve()
       }
     })
