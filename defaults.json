@@ -1,5 +1,5 @@
 {
-    "host":"opc.tcp://localhost:3005",
+    "host":"opc.tcp://opcua.rocks:4840",
     "file":"opc.csv",
     "user":"",
     "password":"",
